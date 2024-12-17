@@ -1,0 +1,29 @@
+# Exclude everything in root…
+/*
+!.gitignore
+
+# … except wp-content.
+# !/wp-content
+
+# Now exclude everything in wp-content …
+# /wp-content/*
+
+# … except plugins …
+!/plugins
+
+# Now exclude everything plugins …
+/plugins/*
+
+!/plugins/hhh-data-manager
+
+# … and except themes.
+!/themes
+
+# Now exclude everything in themes …
+/themes/*
+
+# … except child theme spbd-press 
+!/themes/hhhoops-press
+
+# exclude videos because files size are over the git push limit
+/themes/hhhoops-press/assets/videos/*

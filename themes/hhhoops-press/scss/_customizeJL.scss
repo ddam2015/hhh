@@ -1,0 +1,555 @@
+//Table of contents
+
+//Locked Banner
+//Disclaimer
+//Photo
+
+
+
+// @media screen and #{breakpoint(small down)} {
+//   
+// }
+.locked {
+    &__banner {
+        display: flex;
+        align-items: center;
+        border: 2px solid $warning-color;
+        background: $lighter-gray;
+        padding: 5px;
+        margin-bottom: 2rem;
+
+        & i {
+            color: $warning-color;
+            font-size: 1.5rem;
+        }
+
+        & p {
+            margin-bottom: 0;
+            margin-left: 1rem;
+        }
+    }
+}
+
+.disclaimer {
+    text-align:left; 
+
+    &__heading {
+        margin: 1rem 0 .5rem;
+        text-transform: uppercase;
+        font-size: 1rem; 
+        color: $darker-gray;
+    }
+
+    &__text {
+
+    }
+
+    &--stat {
+        width: 100%;
+    }
+}
+
+.photo {
+    &__list-heading {
+        font-weight: 700;
+        font-size: 1rem;
+        color: $darker-gray;
+        text-transform: uppercase;
+        margin-bottom: 0;
+    }
+    
+    &__player-list {
+        margin-top: 1rem;
+
+        &--item {
+            background: white;
+            border: 1px solid $medium-gray;
+            border-radius: $global-radius;
+            text-transform: none;
+            width: 100%;
+            padding: .8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            transition: all .2s;
+
+            &:focus {
+                background: white;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+            
+            &.active {
+                font-weight: 700;
+                background-color: $primary-color;
+                color: white;
+                margin-bottom: 0;
+
+                &:hover {
+                    cursor: default;
+                }
+            }
+
+            & p {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__account {
+
+        &-container {
+            //change for testing TODO
+            display: none;
+        }
+    }
+
+    &__button {
+        &--add {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 4rem;
+            height: 4rem;
+            z-index: 1000;
+            border: none;
+            background: $primary-color;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            border-radius: 50%;
+            box-shadow: 0px 4px 4px 0 rgba(0,0,0,.2);
+            cursor: pointer;
+            transition: all .2s;
+
+            @include breakpoint(medium up) {
+                width: auto;
+                height: auto;
+                border-radius: 50px;
+                font-size: 1rem;
+                position: static;
+                margin: 1rem 0 1rem auto;
+                box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, .2);
+
+                & span {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+   
+
+    &__library {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    &__img-container {
+        position: relative;
+        flex-basis: calc(33% - 4px);
+        margin: 2px;
+        box-sizing: border-box;
+
+        &.pending__img-container {
+            flex-basis: calc(10% - 4px);
+        }
+
+        &--homepage {
+            position: relative;
+            flex-basis: calc(20% - 4px);
+            margin: 2px;
+            box-sizing: border-box;
+
+            &::before {
+                content: '';
+                display: block;
+                padding-top: 100%;
+            }
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            padding-top: 100%;
+        }
+
+        &.photo__private-container::after { 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background-image: url('https://grassroots365.com/wp-content/uploads/2021/11/hidden-eye.png');
+            background-size: 90px 70px;
+            display: inline-block;
+            width: 90px; 
+            height: 70px;
+            content:"";
+        }
+
+        &.photo__homepage {
+            border: 5px solid #D4AF37;
+        }
+
+
+        &.photo__homepage::after {
+            // content: '★';
+            // color: gold;
+            // position: absolute;
+            // top: -15px;
+            // font-size: 3rem;   
+        }
+
+        &.photo__admin {
+            
+            &::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: url('https://grassroots365.com/wp-content/uploads/2017/09/g365_logo_4CP_Sm.png');
+                background-size: 100px 30px;
+                width: 100px;
+                height: 30px;
+                content:'';
+            }
+
+            &.photo__private-container::after {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                background-image: url('https://grassroots365.com/wp-content/uploads/2021/11/hidden-eye.png');
+                background-size: 90px 70px;
+                display: inline-block;
+                width: 90px; 
+                height: 70px;
+                content:"";
+            }
+        }
+
+        @include breakpoint(medium up) {
+            flex-basis: calc(25% - 10px);
+            margin: 5px;
+        }
+    }
+
+    &__img {
+         position: absolute;
+        top: 0; 
+        left: 0;
+        height: 100%;
+        width: 100%;
+        // width: 30vw;
+        // height: 30vw;
+        // margin-bottom: 1%;
+        // margin-left:1%;
+        // object-fit: cover;
+
+        // @include breakpoint(medium up) {
+        //    width: 10vw;
+        //    height: 10vw;
+        // }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+       &.photo__private {
+            filter: brightness(.3);
+
+            &::before {
+                content: 'https://cdn1.iconfinder.com/data/icons/hawcons/32/698425-icon-21-eye-hidden-512.png';
+
+            }
+        }
+    }
+
+    &__context-menu {
+        position:absolute;
+        z-index: 1000;
+        border-radius: $global-radius;
+        width: 230px;
+        height: auto;
+        background-color:rgb(255, 255, 255);
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        animation-name: appear;
+        animation-duration: .2s;
+        animation-iteration-count: 1;
+        transition: all .2s;
+       
+        @include breakpoint(medium down) {
+            width: 250px;
+            position: fixed;
+            z-index: 1100;
+            margin: 0 auto;
+            transition: all 0s;
+        }
+
+        &:hover{
+            box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        & ul  {
+            margin: 0;
+            padding: 5px;
+        }
+        
+        & li {
+            position:relative;
+            display: block;
+            vertical-align: middle;
+            line-height: 40px;
+            list-style-type:none;
+            width: 100%;
+            height: auto;
+            padding-left: 5px;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $dark-gray;
+            }
+
+            &:hover{
+                // background-color:rgb(66, 134, 244);
+                background-color: $primary-color; 
+                // background: -webkit-linear-gradient(to left , #3CD3AD, #4CB8C4);
+                // background: linear-gradient(to left , #3CD3AD, #4CB8C4); 
+                color:rgb(255,255,255);
+            }
+
+            &#frtItem{
+                color:hsla(237, 0%, 54%, 1);
+
+                &:hover{
+                    color:#fff;
+                }
+        }
+            // &:before{
+            //   position:absolute;
+            //   visibility:hidden;
+            //   width:4px;
+            //   height:36px;
+            //   top:2px;
+            //   left:2px;
+            //   background-color:rgba(0,0,0,0.3);
+            //   content:'';
+            // }
+            &:hover {
+                // Line At Start of Image
+                // &:before{
+                //     visibility:visible;
+                //   }
+            }
+         }
+        }
+}
+
+#photoSwitchPlayerBtn {
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.button {
+    &--back {
+        border: none;
+        margin-bottom: 1rem;
+
+        &:hover {
+            cursor: pointer;
+            background: none;
+        }
+
+        &:focus {
+            background: none;
+        }
+    }
+}
+
+.homepage-account {
+    margin-bottom: 1rem;
+
+    &__image-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+
+@keyframes appear{
+ 0% {
+  transform: scale(0.1) translateX(-100px);
+ }
+ 100%{
+  transform: scale(1) translateX(0px);
+  }
+}
+@keyframes revappear{
+ 0% {
+  transform: scale(0.1) translateX(100px);
+ }
+ 100%{
+  transform: scale(1) translateX(0px);
+  }
+}
+
+
+.pending {
+    &__wrapper {
+        border: 2px solid $warning-color;
+        padding: 5px;
+        background: #F5EED6;
+
+        & p {
+            margin: 0;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    &__img-container {
+        display: none;
+    }
+}
+  
+  .toast{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 8px;
+    background-color: $darker-gray;
+    color:$white;
+    box-shadow: 0px 4px 4px 0 rgba(0,0,0,.2);
+    animation-name:toast;
+    animation-duration: 3s; 
+    animation-iteration-count: 1;
+    transition-timing-function: cubic-bezier(0.27, 0.81, 0.86, 1.37);
+  }
+
+// @include breakpoint(small up) {
+    @keyframes toast{
+        0%{
+            top:25vh;
+        }
+        10%{
+            top:22vh;
+        } 
+        30%{
+            opacity:1;
+        }
+        80%{
+            opacity: 1;
+        }
+        100%{
+            opacity:0;
+            top: 22vh;
+        }
+    }
+// } 
+
+// @include breakpoint(medium up) {
+//     @keyframes toast{
+//         0%{
+//             top:15vh;
+//         }
+//         10%{
+//             top:13vh;
+//         } 
+//         30%{
+//             opacity:1;
+//         }
+//         80%{
+//             opacity: 1;
+//         }
+//         100%{
+//             opacity:0;
+//             top: 13vh;
+//         }
+//     }
+
+// }
+.modal {
+    &__confirm {
+        &--outer {
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.8);
+        }
+        &--inner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 10001;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: auto;
+            padding: 1.2rem;
+            background: $white;
+            border-radius: 5px;
+            box-shadow:0 0 8px 2px rgba(0, 0, 0, 0.2);
+            
+            @include breakpoint(medium up) {
+                width: 40%;
+            }
+
+            & p {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid $dark-gray;
+            }
+
+            & button {
+                &:hover {
+                    cursor: pointer;
+                    background: none;
+                }
+            }
+        }
+    }
+}
+
+#contextMenu li {
+    position: relative;
+}
+
+#publicBtn, #privateBtn, #makeHomeBtn, #removeHomeBtn, #deletePhotoBtn {
+    // text-align: right;
+
+    // &:before {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     content: 'hello';
+    // }
+}
+
+.profile__homepage-container {
+    display: flex;
+    width: 100%;
+
+    & .photo__img-container {
+        position: relative;
+        flex-basis: calc(20% - 4px);
+        margin: 2px;
+        box-sizing: border-box;
+
+    }    
+}
